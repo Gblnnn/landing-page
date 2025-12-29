@@ -1,4 +1,4 @@
-import { Snowflake } from "lucide-react";
+import { PartyPopper, Snowflake, Sparkle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ export default function Header() {
           cursor: "pointer",
           border: "",
           height: "2rem",
-          background: "linear-gradient(90deg, darkslateblue,midnightblue)",
+          background: "linear-gradient(90deg, crimson,midnightblue)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -29,10 +29,10 @@ export default function Header() {
         {/* <Cog width={"1rem"} color="red" />
         <p style={{ fontSize: "0.8rem" }}>Site is under maintainence.</p> */}
 
-        <Snowflake className="animate-pulse" width={"1rem"} color="salmon" />
+        <PartyPopper className="animate-pulse" width={"1rem"} color="salmon" />
         <p style={{ fontSize: "0.8rem" }}>
-          Merry Christmas
-          <b style={{}}> 2025!</b>
+          Welcome
+          <b style={{}}> 2026!</b>
         </p>
       </div>
 
