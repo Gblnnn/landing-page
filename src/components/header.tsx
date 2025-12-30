@@ -4,7 +4,6 @@ import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
 import MobileNav from "./mobile-nav";
 import { Nav } from "./navigation-menu";
-import RopeLights from "./rope-lights";
 
 export default function Header() {
   const usenavigate = useNavigate();
@@ -92,7 +91,7 @@ export default function Header() {
           <Nav fontsize="1rem" />
         </div>
       </div>
-      <RopeLights />
+      {/* <RopeLights /> */}
 
       <div
         style={{
