@@ -1,4 +1,4 @@
-import { PartyPopper, Snowflake, Sparkle, Sparkles } from "lucide-react";
+import { PartyPopper } from "lucide-react";
 import { useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 import { useNavigate } from "react-router-dom";
