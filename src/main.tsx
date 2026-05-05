@@ -8,7 +8,7 @@ import "./WEB/css/clash-grotesk.css";
 import "./Tanker/css/tanker.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider defaultTheme="dark">
+  <ThemeProvider defaultTheme="dark" storageKey="app-theme">
     <App />
   </ThemeProvider>
 );

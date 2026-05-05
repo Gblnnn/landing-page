@@ -18,7 +18,7 @@ export default function Header() {
           border: "",
           height: "2rem",
           background: "linear-gradient(90deg, crimson,midnightblue)",
-          display: "flex",
+          display: "none",
           justifyContent: "center",
           alignItems: "center",
           gap: "0.5rem",
