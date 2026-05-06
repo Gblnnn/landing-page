@@ -31,7 +31,6 @@ export default function Project(props: Props) {
       >
         {props.img ? (
           <img
-            loading="lazy"
             alt="project"
             className="project-img"
             src={props.img}

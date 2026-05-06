@@ -103,26 +103,17 @@ export function Nav(props: Props) {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <Link to="our-team">
-                <ListItem href="/our-team" title="Our Team">
-                  A team commited to excellence.
-                </ListItem>
-              </Link>
+              <ListItem href="/our-team" title="Our Team">
+                A team commited to excellence.
+              </ListItem>
 
-              <Link to="our-mission">
-                <ListItem title="Our Mission">
-                  Learn more about our mission.
-                </ListItem>
-              </Link>
+              <ListItem href="/our-mission" title="Our Mission">
+                Learn more about our mission.
+              </ListItem>
 
-              <Link to="/our-values">
-                <ListItem
-                  href="/docs/primitives/typography"
-                  title="Our Values & Culture"
-                >
-                  Learn more about our core values.
-                </ListItem>
-              </Link>
+              <ListItem href="/our-values" title="Our Values & Culture">
+                Learn more about our core values.
+              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -145,34 +136,37 @@ export function Nav(props: Props) {
           </NavigationMenuContent>
         </NavigationMenuItem> */}
         <NavigationMenuItem>
-          <Link to="/projects">
-            <NavigationMenuLink
+          <NavigationMenuLink asChild>
+            <Link
+              to="/projects"
               style={{ fontSize: props.fontsize, background: "none" }}
               className={navigationMenuTriggerStyle()}
             >
               <p className="hoverable">Projects</p>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/careers">
-            <NavigationMenuLink
+          <NavigationMenuLink asChild>
+            <Link
+              to="/careers"
               style={{ fontSize: props.fontsize, background: "none" }}
               className={navigationMenuTriggerStyle()}
             >
               <p className="hoverable">Careers</p>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/contact-us">
-            <NavigationMenuLink
+          <NavigationMenuLink asChild>
+            <Link
+              to="/contact-us"
               style={{ fontSize: props.fontsize, background: "none" }}
               className={navigationMenuTriggerStyle()}
             >
               <p className="hoverable">Contact Us</p>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

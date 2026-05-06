@@ -2,7 +2,6 @@ import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 
 import { X } from "lucide-react";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button } from "../components/ui/button";
 import { Dialog, DialogContent, DialogFooter } from "../components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
@@ -140,19 +139,14 @@ export default function DefaultDialog(props: Props) {
                         key={i.id}
                         className="hover:cursor-grab active:cursor-grabbing"
                       >
-                        <LazyLoadImage
+                        <img
                           className="dialog-image"
                           width={"100%"}
-                          threshold={1000}
-                          delayMethod="debounce"
-                          delayTime={1}
-                          effect="black-and-white"
                           style={{
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
                             width: "100%",
-
                             background: "#1a1a1a",
                             objectFit: "cover",
                             overflowClipMargin: "unset",

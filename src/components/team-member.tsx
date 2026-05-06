@@ -27,7 +27,6 @@ export default function TeamMember(props: Props) {
     >
       {props.src ? (
         <img
-          loading="lazy"
           style={{
             background: "",
             height: "20ch",

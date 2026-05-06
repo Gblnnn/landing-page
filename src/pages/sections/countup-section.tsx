@@ -1,6 +1,36 @@
+import { useEffect, useState } from "react";
 import { Factory, UserCheck, Users } from "lucide-react";
-import CountUp from "react-countup";
 import { useNavigate } from "react-router-dom";
+
+function AnimatedCount({
+  end,
+  duration = 1500,
+  style,
+}: {
+  end: number;
+  duration?: number;
+  style?: React.CSSProperties;
+}) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    let start = performance.now();
+    let frame: number;
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setValue(Math.round(progress * end));
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [duration, end]);
+
+  return <span style={style}>{value}</span>;
+}
 
 export default function CountupSection() {
   const usenavigate = useNavigate();
@@ -34,12 +64,9 @@ export default function CountupSection() {
           <div
             style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
           >
-            <CountUp
-              enableScrollSpy
-              duration={1.5}
-              start={0}
+            <AnimatedCount
               end={750}
-              useEasing={true}
+              duration={1500}
               style={{ fontSize: "2rem", fontWeight: 600 }}
             />
             <p style={{ fontSize: "1.5rem" }}>+</p>
@@ -65,12 +92,9 @@ export default function CountupSection() {
           <div
             style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
           >
-            <CountUp
-              enableScrollSpy
-              duration={1.5}
-              start={0}
+            <AnimatedCount
               end={850}
-              useEasing={true}
+              duration={1500}
               style={{ fontSize: "2rem", fontWeight: 600 }}
             />
             <p style={{ fontSize: "1.5rem" }}>+</p>
@@ -93,12 +117,9 @@ export default function CountupSection() {
           <div
             style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
           >
-            <CountUp
-              enableScrollSpy
-              duration={1.5}
-              start={0}
+            <AnimatedCount
               end={1100}
-              useEasing={true}
+              duration={1500}
               style={{ fontSize: "2rem", fontWeight: 600 }}
             />
             <p style={{ fontSize: "1.5rem" }}>+</p>

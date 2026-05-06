@@ -6,6 +6,12 @@
   user-select: none;
 }
 
+img,
+video,
+canvas {
+  overflow: hidden;
+}
+
 :root {
   --nav-color: rgba(50 50 50/65%);
 }
