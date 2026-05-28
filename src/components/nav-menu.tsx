@@ -7,13 +7,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   trigger?: any;
 }
 
 export function NavMenu(props: Props) {
+  const navigate = useNavigate();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{props.trigger}</DropdownMenuTrigger>
@@ -43,10 +44,14 @@ export function NavMenu(props: Props) {
                   marginBottom: "4.65rem",
                 }}
               > */}
-        <DropdownMenuItem>
-          <a
+        <DropdownMenuItem
+          onSelect={(e: any) => {
+            e.preventDefault?.();
+            navigate("/");
+          }}
+        >
+          <div
             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-            href="/"
             style={{ background: "linear-gradient(#002244, #800020)" }}
           >
             <img src="/sohar_star_logo.png" width={"38rem"} />
@@ -63,30 +68,61 @@ export function NavMenu(props: Props) {
             >
               A company focussed on quality & excellence
             </p>
-          </a>
+          </div>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
 
-        <Link to="/our-team">
-          <DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={(e: any) => {
+            e.preventDefault?.();
+            navigate("/our-team");
+          }}
+          onPointerDown={(e: any) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigate("/our-team");
+          }}
+        >
+          <div className="flex items-center gap-2" role="menuitem" tabIndex={0}>
             <Users color="dodgerblue" className="mr-2 h-4 w-4" />
             <span>Our Team</span>
-          </DropdownMenuItem>
-        </Link>
+          </div>
+        </DropdownMenuItem>
 
-        <Link to="/our-mission">
-          <DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={(e: any) => {
+            e.preventDefault?.();
+            navigate("/our-mission");
+          }}
+          onPointerDown={(e: any) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigate("/our-mission");
+          }}
+        >
+          <div className="flex items-center gap-2" role="menuitem" tabIndex={0}>
             <Earth color="dodgerblue" className="mr-2 h-4 w-4" />
             <span>Our Mission</span>
-          </DropdownMenuItem>
-        </Link>
+          </div>
+        </DropdownMenuItem>
 
-        <Link to="/our-values">
-          <DropdownMenuItem>
+        <DropdownMenuItem
+          onSelect={(e: any) => {
+            e.preventDefault?.();
+            navigate("/our-values");
+          }}
+          onPointerDown={(e: any) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigate("/our-values");
+          }}
+        >
+          <div className="flex items-center gap-2" role="menuitem" tabIndex={0}>
             <Handshake color="dodgerblue" className="mr-2 h-4 w-4" />
             <span>Our Values & Culture</span>
-          </DropdownMenuItem>
-        </Link>
+          </div>
+        </DropdownMenuItem>
+    
         {/* </DropdownMenuSubContent>
             </DropdownMenuPortal> */}
         {/* </DropdownMenuSub> */}
