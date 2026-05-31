@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "@/firebase";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, Info, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Props {
@@ -312,6 +312,17 @@ export default function JobApplicationDialog({
                       transition: "border 0.2s",
                     }}
                   />
+                </div>
+                <br/>
+                <div style={{display:"flex", gap:"0.5rem", fontSize:"0.85rem", flexFlow:"column", alignItems:"center", border:""}}>
+                  <div style={{display:"flex", gap:"0.5rem", justifyContent:"center", alignItems:"center", border:""}}>
+                    <Info size={40}/>
+                  <p>If you are attaching a google drive link, please make sure the file is set to "Anyone with the link can view".</p>
+                  </div>
+                  
+
+                  {/* <p style={{textAlign:"right"}}> إذا كنت تقوم بإرفاق رابط جوجل درايف، فتأكد من ضبط الملف على "يمكن لأي شخص لديه الرابط عرضه".</p> */}
+                 
                 </div>
                 <div
                   style={{

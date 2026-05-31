@@ -113,7 +113,7 @@ export default function Work(props: Props) {
             border: "",
           }}
         >
-          <div>
+          
             {props.actively_hiring && (
               <div
                 style={{
@@ -128,7 +128,7 @@ export default function Work(props: Props) {
                 </p>
               </div>
             )}
-          </div>
+          
 
           <a>
             <motion.button
@@ -142,10 +142,13 @@ export default function Work(props: Props) {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                border: "none",
+                // border: "none",
                 cursor: "pointer",
                 color: "white",
                 boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                
+                border:"",
+                
               }}
             >
               Apply

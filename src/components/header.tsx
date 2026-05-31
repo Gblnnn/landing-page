@@ -39,7 +39,7 @@ export default function Header() {
         className="nav-bar"
         style={{
           display: "flex",
-          height: "6rem",
+          height: "5.5rem",
           alignItems: "center",
           position: "sticky",
           top: 0,
@@ -47,6 +47,7 @@ export default function Header() {
           zIndex: 15,
           boxShadow: "1px 1px 20px rgba(0 0 0/ 50%)",
           border: "",
+      
         }}
       >
         <div
@@ -56,12 +57,13 @@ export default function Header() {
             alignItems: "center",
             gap: "0.25rem",
             zIndex: 10,
-            background: "rgba(100 100 100/ 10%)",
+            // background: "rgba(100 100 100/ 10%)",
             borderRadius: "0.5rem",
             padding: "0.25rem",
             paddingRight: "1rem",
             paddingLeft: "0.75rem",
             cursor: "pointer",
+            marginLeft: "clamp(0rem, 2.5vw, 3rem)",
           }}
           onClick={() => usenavigate("/")}
         >
@@ -81,9 +83,9 @@ export default function Header() {
             }}
           >
             Sohar Star United{" "}
-            <strong style={{ fontWeight: 400, letterSpacing: "0.1rem" }}>
+            {/* <strong style={{ fontWeight: 400, letterSpacing: "0.1rem" }}>
               LLC
-            </strong>{" "}
+            </strong>{" "} */}
           </h1>
         </div>
 
