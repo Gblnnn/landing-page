@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "rewrites": [
+    {
+      "source": "/iclock/cdata.aspx",
+      "destination": "/api/iclock/cdata.aspx"
+    }
+  ]
+}
