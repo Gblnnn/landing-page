@@ -1,17 +1,37 @@
-export default function handler(req, res) {
-  console.log("ICLOCK HIT");
+export const config = {
+  api: { bodyParser: false },
+};
 
-  console.log("QUERY:", req.query);
+export default async function handler(req, res) {
+  const sn = req.query.SN || "";
 
-  let raw = "";
+  if (req.method === "GET") {
+    // This exact format is what ZKTeco expects to turn green
+    const response = [
+      `GET OPTION FROM: ${sn}`,
+      `ATT,Stamp=0`,
+      `ErrorDelay=30`,
+      `Delay=10`,
+      `TransFlag=TransData AttLog OpLog AttPhoto EnrollUser ChgUser EnrollFP ChgFP UserPic`,
+      `TimeZone=4`,  // UTC+4 for Oman 🇴🇲
+      `ServerVer=2.4.1 2015-04-27`,
+      `PushProtVer=2.4.1`,
+      `PushOptionsFlag=1`,
+    ].join("\n");
 
-  req.on("data", chunk => {
-    raw += chunk.toString();
+    res.setHeader("Content-Type", "text/plain");
+    return res.status(200).send(response);
+  }
+
+  // POST — punch data
+  let body = "";
+  await new Promise((resolve) => {
+    req.on("data", (chunk) => (body += chunk.toString()));
+    req.on("end", resolve);
   });
 
-  req.on("end", () => {
-    console.log("RAW:", raw);
+  console.log("=== ZKTECO PUSH ===");
+  console.log("Body:", body);
 
-    res.status(200).send("OK");
-  });
+  return res.status(200).send("OK");
 }
