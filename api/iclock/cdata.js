@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
+  "https://layonfapjyiupkjdswbj.supabase.co/",
+  "sb_secret_79rVcwFLYzk18UrQXJwjig_HLSuhhYY"
 );
 
 export const config = {
@@ -14,7 +14,7 @@ export const config = {
 export default async function handler(req, res) {
   const sn = req.query.SN || "UNKNOWN";
 
-  if (req.method === "GET") {
+  if (req.method === "GET") { 
     const response = [
       `GET OPTION FROM: ${sn}`,
       `ATT,Stamp=0`,
