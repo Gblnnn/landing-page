@@ -1,8 +1,15 @@
-import { useState } from "react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { db } from "@/firebase";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle, Info, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 interface Props {
   open: boolean;
@@ -21,6 +28,8 @@ export default function JobApplicationDialog({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [cvLink, setCvLink] = useState("");
+  const [customDesignation, setCustomDesignation] = useState(""); // State for custom designation
+  const [designation, setDesignation] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -33,6 +42,7 @@ export default function JobApplicationDialog({
         email,
         phone,
         cvLink,
+        designation: designation === "Other" ? customDesignation : designation, // Use custom designation if "Other" is selected
         jobId,
         jobTitle,
         created_at: Timestamp.now(),
@@ -42,6 +52,8 @@ export default function JobApplicationDialog({
       setEmail("");
       setPhone("");
       setCvLink("");
+      setCustomDesignation(""); // Clear custom designation
+      setDesignation("");
     } catch (err) {
       alert("Failed to submit application.");
     }
@@ -289,6 +301,60 @@ export default function JobApplicationDialog({
                   }}
                 >
                   <label
+                    htmlFor="designation"
+                    style={{ fontSize: "0.9rem", color: "#eaeaea" }}
+                  >
+                    Designation
+                  </label>
+                  <Select
+                    value={designation}
+                    onValueChange={setDesignation}
+                    required
+                  >
+                    <SelectTrigger
+                    id="designation"
+                    style={{
+                      padding: "0.5rem 0.8rem",
+                      borderRadius: "0.4rem",
+                      border: "1px solid #2d3748",
+                      background: "#232946",
+                      color: "#fff",
+                      fontSize: "0.97rem",
+                      outline: "none",
+                      transition: "border 0.2s",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      height: "auto", // Ensure height adjusts to content
+                    }}
+                  >
+                      <SelectValue placeholder="Select a designation" />
+                    </SelectTrigger>
+                    <SelectContent style={{
+                      background: "#232946", // Match dialog background
+                      color: "#fff",
+                      border: "1px solid #2d3748",
+                      borderRadius: "0.4rem",
+                      zIndex: 1001, // Ensure it appears above the dialog
+                    }}>
+                      <SelectItem value="MEP Engineer">MEP Engineer</SelectItem>
+                      <SelectItem value="Civil Supervisor">Civil Supervisor</SelectItem>
+                      <SelectItem value="HSE Officer">HSE Officer</SelectItem>
+                      <SelectItem value="Site Engineer">Site Engineer</SelectItem>
+                      <SelectItem value="Project Manager">Project Manager</SelectItem>
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.3rem",
+                  }}
+                >
+                  <label
                     htmlFor="cvLink"
                     style={{ fontSize: "0.9rem", color: "#eaeaea" }}
                   >
@@ -314,6 +380,40 @@ export default function JobApplicationDialog({
                   />
                 </div>
                 <br/>
+                {designation === "Other" && ( // Conditionally render custom designation input
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    <label
+                      htmlFor="customDesignation"
+                      style={{ fontSize: "0.9rem", color: "#eaeaea" }}
+                    >
+                      Please specify your designation
+                    </label>
+                    <input
+                      id="customDesignation"
+                      type="text"
+                      placeholder="e.g., Senior Software Engineer"
+                      value={customDesignation}
+                      required
+                      onChange={(e) => setCustomDesignation(e.target.value)}
+                      style={{
+                        padding: "0.5rem 0.8rem",
+                        borderRadius: "0.4rem",
+                        border: "1px solid #2d3748",
+                        background: "#232946",
+                        color: "#fff",
+                        fontSize: "0.97rem",
+                        outline: "none",
+                        transition: "border 0.2s",
+                      }}
+                    />
+                  </div>
+                )}
                 <div style={{display:"flex", gap:"0.5rem", fontSize:"0.85rem", flexFlow:"column", alignItems:"center", border:""}}>
                   <div style={{display:"flex", gap:"0.5rem", justifyContent:"center", alignItems:"center", border:""}}>
                     <Info size={40}/>
