@@ -347,6 +347,42 @@ export default function JobApplicationDialog({
                     </SelectContent>
                   </Select>
                 </div>
+
+                    {designation === "Other" && ( // Conditionally render custom designation input
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    <label
+                      htmlFor="customDesignation"
+                      style={{ fontSize: "0.9rem", color: "#eaeaea" }}
+                    >
+                      Please specify your designation
+                    </label>
+                    <input
+                      id="customDesignation"
+                      type="text"
+                      placeholder="e.g., Electrical Engineer"
+                      value={customDesignation}
+                      required
+                      onChange={(e) => setCustomDesignation(e.target.value)}
+                      style={{
+                        padding: "0.5rem 0.8rem",
+                        borderRadius: "0.4rem",
+                        border: "1px solid #2d3748",
+                        background: "#232946",
+                        color: "#fff",
+                        fontSize: "0.97rem",
+                        outline: "none",
+                        transition: "border 0.2s",
+                      }}
+                    />
+                  </div>
+                )}
+
                 <div
                   style={{
                     display: "flex",
@@ -380,40 +416,7 @@ export default function JobApplicationDialog({
                   />
                 </div>
                 <br/>
-                {designation === "Other" && ( // Conditionally render custom designation input
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "0.3rem",
-                    }}
-                  >
-                    <label
-                      htmlFor="customDesignation"
-                      style={{ fontSize: "0.9rem", color: "#eaeaea" }}
-                    >
-                      Please specify your designation
-                    </label>
-                    <input
-                      id="customDesignation"
-                      type="text"
-                      placeholder="e.g., Senior Software Engineer"
-                      value={customDesignation}
-                      required
-                      onChange={(e) => setCustomDesignation(e.target.value)}
-                      style={{
-                        padding: "0.5rem 0.8rem",
-                        borderRadius: "0.4rem",
-                        border: "1px solid #2d3748",
-                        background: "#232946",
-                        color: "#fff",
-                        fontSize: "0.97rem",
-                        outline: "none",
-                        transition: "border 0.2s",
-                      }}
-                    />
-                  </div>
-                )}
+                
                 <div style={{display:"flex", gap:"0.5rem", fontSize:"0.85rem", flexFlow:"column", alignItems:"center", border:""}}>
                   <div style={{display:"flex", gap:"0.5rem", justifyContent:"center", alignItems:"center", border:""}}>
                     <Info size={40}/>
