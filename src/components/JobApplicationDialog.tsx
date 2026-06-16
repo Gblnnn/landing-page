@@ -415,10 +415,10 @@ export default function JobApplicationDialog({
                     }}
                   />
                 </div>
-                <br/>
                 
-                <div style={{display:"flex", gap:"0.5rem", fontSize:"0.85rem", flexFlow:"column", alignItems:"center", border:""}}>
-                  <div style={{display:"flex", gap:"0.5rem", justifyContent:"center", alignItems:"center", border:""}}>
+                
+                <div style={{display:"flex", gap:"0.5rem", fontSize:"0.85rem", flexFlow:"column", alignItems:"center", border:"", marginTop:"0.5rem"}}>
+                  <div style={{display:"flex", gap:"0.75rem", justifyContent:"center", alignItems:"center", border:"1px solid #2d3748", padding:"0.5rem 0.8rem", borderRadius:"0.4rem"}}>
                     <Info size={40}/>
                   <p>If you are attaching a google drive link, please make sure the file is set to "Anyone with the link can view".</p>
                   </div>
